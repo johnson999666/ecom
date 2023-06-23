@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ecommerce App</title>
+
+
+  <style>
+    /* Reset some default styles */
+    body,
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Overall layout */
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      background-color: #f2f2f2;
+      color: #333;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #333;
+      font-weight: 500;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    nav {
+      background-color: #333;
+      margin-bottom: 20px;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    nav li {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    nav a {
+      display: block;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      background-color: #555;
+    }
+
+    ul {
+      list-style-type: none;
+    }
+
+    li {
+      margin-bottom: 20px;
+    }
+
+    img {
+      max-width: 200px;
+      max-height: 200px;
+    }
+
+    p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to the Ecommerce App</h1>
+  <h1>Login to Buy Products</h1>
+  <nav>
+    <ul>
+      <li><a href="/login">Login</a></li>
+    </ul>
+  </nav>
+  <h2>Products</h2>
+  <ul>
+    <% products.forEach(function(product) { %>
+      <li>
+        <h3><%= product.name %></h3>
+        <img src="<%= product.image %>" alt="<%= product.name %>">
+        <p>Price: $<%= product.price %></p>
+        <p>Description: <%= product.description %></p>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>

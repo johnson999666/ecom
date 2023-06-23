@@ -1,0 +1,1 @@
+[{"id":"5","name":"Product 5","price":39.99,"description":"This is the third product","image":"images/yellow.jpg"},{"id":"8","name":"Product 8","price":9.99,"description":"This is the third product","image":"images/blu.jpg"},{"id":"12","name":"Product 12","price":9.99,"description":"This is the third product","image":"images/gr.jpg"}]

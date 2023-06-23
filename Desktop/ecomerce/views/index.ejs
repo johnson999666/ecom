@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ecommerce App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body,
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Overall layout */
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      color: #333;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #333;
+      font-weight: 500;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 10px;
+    }
+
+    nav a {
+      display: block;
+      
+      text-decoration: none;
+      margin-right: 10px;
+    }
+
+    ul {
+      list-style-type: none;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    li {
+      margin-bottom: 20px;
+      flex-basis: calc(33.33% - 20px);
+      margin-right: 20px;
+    }
+
+    img {
+    max-width: 100%;
+    max-height: 200px; /* Set a maximum height for the images */
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 10px;
+  }
+
+    p {
+      margin: 0;
+    }
+
+    /* Styles for the buttons */
+    .button {
+    background-color: blue;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+    text-decoration: none;
+    border-radius: 3px;
+    margin: 5px;
+  }
+
+  .button:hover {
+    background-color: darkblue;
+  }
+
+  /* Styles specifically for the "Delete from Cart" button */
+  .button.delete-from-cart {
+    background-color: red;
+  }
+
+  /* ... other styles ... */
+
+  button.button.delete-from-cart {
+    background-color: red;
+    color: white;
+  }
+
+  /* ... other styles ... */
+
+
+
+    /* Additional styles for the cart icon */
+
+
+   
+    a {
+    display: inline-block;
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  }
+
+  a:hover {
+    background-color: #333;
+    color: #fff;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+  }
+
+ 
+ 
+
+
+  
+  .button.delete-from-cart {
+    background-color: red !important;
+    color: white;
+  }
+
+  .cart-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 100px;
+    height: 100px;
+  }
+
+    /* Flexbox wrapping for products */
+    @media (max-width: 768px) {
+      li {
+        flex-basis: calc(50% - 20px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      li {
+        flex-basis: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+    <h1>Ecommerce App</h1>
+    <nav>
+      <ul>
+       
+        <li class="cart-icon">
+          <a href="/shopping-cart">
+            <img src="images/cart.jpg" alt="Cart">
+          </a>
+        </li>
+      </ul>
+    </nav>
+    
+    <h2>Products - Page <%= pageNumber %></h2>
+    <ul>
+      <% products.forEach(function(product, index) { %>
+        <% if (index % 6 === 0) { %>
+          </ul>
+          <% if (index !== products.length - 1) { %>
+            
+            <ul>
+          <% } %>
+        <% } %>
+        <li>
+          <h3><%= product.name %></h3>
+          <img src="<%= product.image %>" alt="<%= product.name %>">
+          <p>Price: $<%= product.price %></p>
+          <p>Description: <%= product.description %></p>
+          <form action="/cart" method="GET">
+            <input type="hidden" name="productId" value="<%= product.id %>">
+            <button type="submit" onclick="showAlert()" class="button add-to-cart-button">Add to Cart</button>
+          </form>
+          <form action="/delete-item" method="POST">
+            <input type="hidden" name="productId" value="<%= product.id %>">
+            <button type="submit" class="button" style="background-color: red;">Delete from Cart</button>
+
+          </form>
+          <a href="/product-details/<%= product.id %>">Examine</a>
+        </li>
+      <% }) %>
+    </ul>
+    
+    <% if (nextPage !== null) { %>
+      <a href="/?page=<%= nextPage %>">Next Page</a>
+    <% } %>
+    
+    <script>
+      function showAlert() {
+        alert('Item added to cart');
+      }
+    </script>
+</body>
+</html>

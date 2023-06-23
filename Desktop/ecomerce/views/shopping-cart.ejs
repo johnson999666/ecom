@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Shopping Cart</title>
+
+  <style>
+    body,
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Overall layout */
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      color: #333;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #333;
+      font-weight: 500;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 10px;
+    }
+
+    nav a {
+      display: block;
+      
+      text-decoration: none;
+      margin-right: 10px;
+    }
+
+    ul {
+      list-style-type: none;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    li {
+      margin-bottom: 20px;
+      flex-basis: calc(33.33% - 20px);
+      margin-right: 20px;
+    }
+
+    img {
+    max-width: 100%;
+    max-height: 200px; /* Set a maximum height for the images */
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 10px;
+  }
+
+    p {
+      margin: 0;
+    }
+
+    /* Styles for the buttons */
+    .button {
+    background-color: blue;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+    text-decoration: none;
+    border-radius: 3px;
+    margin: 5px;
+  }
+
+  .button:hover {
+    background-color: darkblue;
+  }
+
+  /* Styles specifically for the "Delete from Cart" button */
+  .button.delete-from-cart {
+    background-color: red;
+  }
+
+  /* ... other styles ... */
+
+  button.button.delete-from-cart {
+    background-color: red;
+    color: white;
+  }
+
+  /* ... other styles ... */
+
+
+
+    /* Additional styles for the cart icon */
+
+
+   
+    a {
+    display: inline-block;
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  }
+
+  a:hover {
+    background-color: #333;
+    color: #fff;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+  }
+
+ 
+ 
+
+
+  
+  .button.delete-from-cart {
+    background-color: red !important;
+    color: white;
+  }
+
+  .cart-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 100px;
+    height: 100px;
+  }
+
+    /* Flexbox wrapping for products */
+    @media (max-width: 768px) {
+      li {
+        flex-basis: calc(50% - 20px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      li {
+        flex-basis: 100%;
+      }
+    }
+ 
+.cart-container {
+  margin-top: 20px;
+}
+
+.cart-container ul {
+  padding: 0;
+}
+
+.cart-container li {
+  margin-bottom: 20px;
+  flex-basis: calc(33.33% - 20px);
+  margin-right: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.cart-container h3 {
+  margin-bottom: 10px;
+}
+
+.cart-container p {
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.cart-container .price {
+  font-weight: bold;
+}
+
+.cart-container img {
+  max-width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.cart-container .delete-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 14px;
+  text-decoration: none;
+  border-radius: 3px;
+  margin-top: 10px;
+}
+
+.cart-container .delete-button:hover {
+  background-color: darkred;
+}
+
+.cart-container .buy-button {
+  display: inline-block;
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 14px;
+  text-decoration: none;
+  border-radius: 3px;
+  margin-top: 10px;
+}
+
+.cart-container .buy-button:hover {
+  background-color: darkgreen;
+}
+
+.cart-container .empty-cart-message {
+  margin-top: 20px;
+  font-style: italic;
+  color: #999;
+}
+.delete-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 14px;
+  text-decoration: none;
+  border-radius: 3px;
+  margin-top: 10px;
+}
+
+.delete-button:hover {
+  background-color: darkred;
+}
+
+</style>
+
+</head>
+<body>
+<h1>Shopping Cart</h1>
+
+<div class="cart-container">
+<% if (cart.length > 0) { %>
+  <ul>
+    <% cart.forEach(product => { %>
+      <li>
+        <h3><%= product.name %></h3>
+        <p><% if (product.price) { %>Price: $<span class="price"><%= product.price.toFixed(2) %></span><% } else { %>Price: N/A<% } %></p>
+        <p>Description: <%= product.description %></p>
+        <img src="<%= product.image %>" alt="<%= product.name %>">
+
+        <form id="deleteForm-<%= product.id %>" action="/delete-item" method="POST">
+          <input type="hidden" name="productId" value="<%= product.id %>">
+          <button type="button" class="button delete-button">Delete from Cart</button>
+        </form>
+      </li>
+    <% }); %>
+  </ul>
+  <p>Total Price: $<span id="totalPrice"><%= totalPrice.toFixed(2) %></span></p>
+  <a href="/cards" class="button buy-button">Buy All</a>
+<% } else { %>
+  <p class="empty-cart-message">Your cart is empty.</p>
+<% } %>
+</div>
+
+<a href="/" class="button">Back to Home</a>
+
+<script>
+function updateTotalPrice() {
+  const prices = document.querySelectorAll('.price');
+  let totalPrice = 0;
+  prices.forEach(price => {
+    totalPrice += parseFloat(price.innerText);
+  });
+  document.getElementById('totalPrice').innerText = totalPrice.toFixed(2);
+}
+
+// Attach event listener to each delete button
+const deleteButtons = document.querySelectorAll('.delete-button');
+deleteButtons.forEach(button => {
+  button.addEventListener('click', function() {
+    const form = button.parentElement;
+    form.submit();
+    const listItem = form.parentElement;
+    listItem.remove();
+    updateTotalPrice();
+  });
+});
+</script>
+</body>
+</html>

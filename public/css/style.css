@@ -124,22 +124,23 @@
   }
 
   @media (max-width: 767px) {
-    .container {
-      max-width: 100%;
-    }
-  
     li {
-      width: 500px; /* Keep the same width as on larger screens */
+      width: 400px !important; /* Set a fixed width for the list items */
       margin: 10px;
     }
   
     img {
-      width: 400px;
-      height: 400px;
+      width: 400px !important; /* Set a fixed width for the images */
+      height: auto;
     }
   
     .button {
-      width: auto; /* Remove the width restriction */
+      width: 400px !important; /* Set a fixed width for the buttons */
     }
+    .cart-icon img {
+        width: 100px !important;
+        height: 100px !important;
+      }
   }
+  
   

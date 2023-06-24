@@ -4,7 +4,7 @@
   "description": "testing",
   "main": "index.js",
   "scripts": {
-    "start": "echo \"Error: no start specified\" && exit 1"
+    "start": "node index.js"
   },
   "author": "james",
   "license": "ISC",

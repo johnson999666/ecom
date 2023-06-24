@@ -3,7 +3,7 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const fs = require('fs');
-
+const crypto = require('crypto');
 const app = express();
 
 
@@ -153,7 +153,21 @@ const requireLogin = (req, res, next) => {
 
 
 
-// Connect to MongoDB
+
+
+// Generate a random secret key
+const generateSecretKey = () => {
+  return crypto.randomBytes(32).toString('hex');
+};
+
+// Use the generated secret key for the session
+app.use(session({
+  secret: generateSecretKey(),
+  resave: false,
+  saveUninitialized: false
+}));
+
+
 
 
 // Connect to MongoDB
@@ -552,20 +566,6 @@ app.get('/store', (req, res) => {
   const cart = req.session.cart || [];
   res.render('store', { products, cart });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Start the server
 const port = process.env.PORT || 3000;

@@ -4,146 +4,70 @@
   <title>Ecommerce App</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    body,
-    ul {
-      margin: 0;
-      padding: 0;
-    }
+body,
+ul {
+  margin: 0;
+  padding: 0;
+}
 
-    /* Overall layout */
-    body {
-      font-family: 'Roboto', Arial, sans-serif;
-      color: #333;
-    }
+/* Overall layout */
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  color: #333;
+}
 
-    h1,
-    h2,
-    h3 {
-      color: #333;
-      font-weight: 500;
-    }
+h1,
+h2,
+h3 {
+  color: #333;
+  font-weight: 500;
+}
 
-    h1 {
-      font-size: 28px;
-      margin-bottom: 20px;
-    }
+h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
 
-    nav {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      padding: 10px;
-    }
+nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px;
+}
 
-    nav a {
-      display: block;
-      
-      text-decoration: none;
-      margin-right: 10px;
-    }
+nav a {
+  display: inline-block;
+  text-decoration: none;
+  margin-right: 10px;
+  color: #333;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
 
-    ul {
-      list-style-type: none;
-      display: flex;
-      flex-wrap: wrap;
-    }
+nav a:hover {
+  background-color: #333;
+  color: #fff;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+}
 
-    li {
-      margin-bottom: 20px;
-      flex-basis: calc(33.33% - 20px);
-      margin-right: 20px;
-    }
+ul {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+}
 
-    img {
-    max-width: 100%;
-    max-height: 200px; /* Set a maximum height for the images */
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    margin-bottom: 10px;
-  }
+li {
+  margin-bottom: 20px;
+  flex-basis: calc(33.33% - 20px);
+  margin-right: 20px;
+}
 
-    p {
-      margin: 0;
-    }
-
-    /* Styles for the buttons */
-    .button {
-    background-color: blue;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-size: 14px;
-    text-decoration: none;
-    border-radius: 3px;
-    margin: 5px;
-  }
-
-  .button:hover {
-    background-color: darkblue;
-  }
-
-  /* Styles specifically for the "Delete from Cart" button */
-  .button.delete-from-cart {
-    background-color: red;
-  }
-
-  /* ... other styles ... */
-
-  button.button.delete-from-cart {
-    background-color: red;
-    color: white;
-  }
-
-  /* ... other styles ... */
-
-
-
-    /* Additional styles for the cart icon */
-
-
-   
-    a {
-    display: inline-block;
-    color: #333;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 5px;
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
-  }
-
-  a:hover {
-    background-color: #333;
-    color: #fff;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
-  }
-
- 
- 
-
-
-  
-  .button.delete-from-cart {
-    background-color: red !important;
-    color: white;
-  }
-
-  .cart-icon {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 100px;
-    height: 100px;
-  }
-
-    /* Flexbox wrapping for products */
-   
-    @media (max-width: 768px) {
+@media (max-width: 768px) {
   li {
     flex-basis: calc(50% - 20px);
   }
@@ -151,9 +75,66 @@
 
 @media (max-width: 480px) {
   li {
-    flex-basis: 50%;
+    flex-basis: 100%;
+    margin-right: 0;
   }
 }
+
+img {
+  max-width: 100%;
+  max-height: 200px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+p {
+  margin: 0;
+}
+
+.button {
+  background-color: blue;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 14px;
+  text-decoration: none;
+  border-radius: 3px;
+  margin: 5px;
+}
+
+.button:hover {
+  background-color: darkblue;
+}
+
+.button.delete-from-cart {
+  background-color: red;
+  color: white;
+}
+
+.cart-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 100px;
+  height: 100px;
+}
+
+/* Remove hyperlink styles for the cart icon */
+.cart-icon a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.cart-icon a:hover {
+  background-color: transparent;
+  color: inherit;
+  box-shadow: none;
+}
+
 
   </style>
 </head>

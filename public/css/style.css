@@ -129,13 +129,13 @@
     }
   
     li {
-      width: 300px; /* Keep the same width as on larger screens */
+      width: 500px; /* Keep the same width as on larger screens */
       margin: 10px;
     }
   
     img {
-      width: 200px;
-      height: 200px;
+      width: 400px;
+      height: 400px;
     }
   
     .button {

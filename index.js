@@ -498,7 +498,7 @@ app.post('/login', (req, res) => {
   fs.readFile('user-data.txt', 'utf8', (err, data) => {
     if (err) {
       console.error(err);
-      res.sendStatus(500);
+      res.redirect('/login');
       return;
     }
 
@@ -513,15 +513,16 @@ app.post('/login', (req, res) => {
           const redirectTo = req.session.redirectTo;
           delete req.session.redirectTo;
           res.redirect(redirectTo);
+
         } else {
           res.redirect('/');
         }
       } else {
-        res.status(401).send('Incorrect login credentials');
+        res.redirect('/login');
       }
     } catch (err) {
       console.error(err);
-      res.sendStatus(500);
+      res.redirect('/login');
     }
   });
 });
@@ -556,9 +557,9 @@ app.post('/signup', (req, res) => {
   fs.writeFile('user-data.txt', jsonData, (err) => {
     if (err) {
       console.error(err);
-      res.sendStatus(500);
+      res.redirect('/');
     } else {
-      res.sendStatus(200);
+      res.redirect('/');
     }
   });
 });

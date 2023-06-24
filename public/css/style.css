@@ -1,0 +1,102 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  .cart-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+  }
+
+  .cart-icon img {
+    width: 30px;
+    height: 30px;
+  }
+
+  h2 {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 24px;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  h3 {
+    margin: 10px 0;
+  }
+
+  img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  p {
+    margin: 5px 0;
+  }
+
+  form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .button.delete-button {
+    background-color: red;
+  }
+
+  a {
+    text-align: center;
+    margin-top: 10px;
+    text-decoration: none;
+    color: blue;
+  }
+
+  .pagination-link {
+    text-align: center;
+    margin-top: 20px;
+    text-decoration: none;
+    color: blue;
+  }

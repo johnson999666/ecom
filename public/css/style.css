@@ -131,4 +131,58 @@ body {
       width: 100%;
     }
   }
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 60px; /* Increase the font size for h1 */
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 45px; /* Increase the font size for h2 */
+  }
+  
+  h3 {
+    margin: 10px 0;
+    font-size: 40px; /* Increase the font size for h3 */
+  }
+  
+  p {
+    margin: 5px 0;
+    font-size: 24px; /* Increase the font size for paragraphs */
+  }
+  
+  a {
+    text-align: center;
+    margin-top: 10px;
+    text-decoration: none;
+    color: blue;
+    font-size: 24px; /* Increase the font size for hyperlinks */
+  }
+  
+  .button {
+    margin-top: 10px;
+    padding: 20px 30px; /* Increase the padding for buttons */
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 24px; /* Increase the font size for buttons */
+  }
+  
+  .button.delete-button {
+    background-color: red;
+  }
+  
   

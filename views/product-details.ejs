@@ -2,211 +2,128 @@
 <html>
 <head>
   <title>Product Details</title>
-  <link rel="stylesheet" type="text/css" href="/styles.css">
-</head>
-
-<style>
-    /* Copy the styles from the previous code and paste them here */
-    body,
-    ul {
-      margin: 0;
-      padding: 0;
-    }
-
-    /* Overall layout */
+  <style>
     body {
-      font-family: 'Roboto', Arial, sans-serif;
-      color: #333;
-    }
-
-    h1,
-    h2,
-    h3 {
-      color: #333;
-      font-weight: 500;
-    }
-
-    h1 {
-      font-size: 28px;
-      margin-bottom: 20px;
-    }
-
-    nav {
       display: flex;
-      justify-content: flex-end;
+      justify-content: center;
       align-items: center;
-      padding: 10px;
-    }
-
-    nav a {
-      display: block;
-      color: #fff;
-      text-decoration: none;
-      margin-right: 10px;
-    }
-
-    ul {
-      list-style-type: none;
-      display: flex;
-      flex-wrap: wrap;
-    }
-
-    li {
-      margin-bottom: 20px;
-      flex-basis: calc(33.33% - 20px);
-      margin-right: 20px;
-    }
-
-    img {
-    max-width: 100%;
-    max-height: 200px; /* Set a maximum height for the images */
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    margin-bottom: 10px;
-  }
-
-    p {
+      height: 100vh;
       margin: 0;
+      background-color: #f2f2f2;
+      font-family: Arial, sans-serif;
+      flex-direction: column;
     }
-
-    /* Styles for the buttons */
-    .button {
-    background-color: blue;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-size: 14px;
-    text-decoration: none;
-    border-radius: 3px;
-    margin: 5px;
-  }
-
-  .button:hover {
-    background-color: darkblue;
-  }
-
-  /* Styles specifically for the "Delete from Cart" button */
-  .button.delete-from-cart {
-    background-color: red;
-  }
-
-  /* ... other styles ... */
-
-  button.button.delete-from-cart {
-    background-color: red;
-    color: white;
-  }
-
-  /* ... other styles ... */
-
-
-
-    /* Additional styles for the cart icon */
-
-
-   
-    a {
-    display: inline-block;
-    color: #333;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 5px;
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
-  }
-
-  a:hover {
-    background-color: #333;
-    color: #fff;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
-  }
-
- 
- 
-
-
-  
-  .button.delete-from-cart {
-    background-color: red !important;
-    color: white;
-  }
-
-  .cart-icon {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 100px;
-    height: 100px;
-  }
-
-    /* Flexbox wrapping for products */
-    @media (max-width: 768px) {
-      li {
-        flex-basis: calc(50% - 20px);
-      }
+    
+    .container {
+      width: 90%;
+      max-width: 600px;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
-
-    @media (max-width: 480px) {
-      li {
-        flex-basis: 100%;
-      }
+    
+    h2.title {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
-
-    /* Styles specifically for the product details page */
+    
     .product-details {
-      margin-top: 20px;
+      text-align: center;
+      margin-bottom: 30px;
     }
-
-    .product-details h3 {
+    
+    .product-details img {
+      
+      
+      margin-bottom: 20px;
+      width: 300px; /* Set the desired width */
+      height: 400px; /* Set the desired height */
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    label {
+      font-weight: bold;
+      display: block;
       margin-bottom: 10px;
     }
-
-    .product-details img {
-      max-height: 200px;
+    
+    select, input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
     }
-
-    .product-details p {
-      margin-bottom: 5px;
+    
+    button[type="submit"] {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 16px;
     }
-
-    .product-details form {
-      margin-top: 10px;
+    
+    .button.delete-from-cart {
+      background-color: red;
     }
-
-    .product-details button {
-      margin-top: 10px;
+    
+    a {
+      display: block;
+      text-align: center;
+      color: #4CAF50;
+      text-decoration: none;
+      font-size: 16px;
     }
-
-    .product-details a {
-      margin-top: 10px;
-    }
-    .product-details img {
-      max-height: 400px; /* Updated size: twice as big */
-    }
-</style>
-
-<body>
-  <h1>Product Details</h1>
-  <div class="product-details">
-    <h3><%= product.name %></h3>
-    <img src="/images/<%= product.image.split('/').pop() %>" alt="<%= product.name %>">
-
-    <p>Price: $<%= product.price %></p>
-    <p>Description: <%= product.description %></p>
+  </style>
+</head>
+<body> 
+  <h2 class="title"><%= product.description %></h2>
+  <div class="container">
+   
+    <div class="product-details">
+      <h3><%= product.name %></h3>
+      <img src="/images/<%= product.image.split('/').pop() %>" alt="<%= product.name %>">
+      <p>Price: $<%= product.price %></p>
+    </div>
+    <h2 class="title"><%= product.description %></h2>
     <form action="/delete-item" method="POST">
       <input type="hidden" name="productId" value="<%= product.id %>">
       <button type="submit" class="button delete-from-cart">Delete from Cart</button>
     </form>
+    <form action="/cart" method="GET">
+      <div class="form-group">
+        <label for="color">Color:</label>
+        <select id="color" name="color">
+          <option value="red">Red</option>
+          <option value="orange">Orange</option>
+          <option value="green">Green</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="size">Size:</label>
+        <select id="size" name="size">
+          <option value="small">Small</option>
+          <option value="medium">Medium</option>
+          <option value="large">Large</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" min="1" value="1">
+      </div>
+      <button type="submit" class="button">Add to Cart</button>
+    </form>
+    <a href="/" class="button">Back to Products</a>
   </div>
-  <form action="/cart" method="GET">
-    <input type="hidden" name="productId" value="<%= product.id %>">
-    <button type="submit" onclick="showAlert()" class="button">Add to Cart</button>
-  </form>
-  <a href="/" class="button">Back to Products</a>
 </body>
 </html>

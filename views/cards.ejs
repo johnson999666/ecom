@@ -3,79 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <title>Credit Card Form</title>
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #f2f2f2;
-      font-family: Arial, sans-serif;
-    }
-
-    .container {
-      width: 300px;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    h1 {
-      text-align: center;
-    }
-
-    h2 {
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    form {
-      margin-top: 20px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    input[type="text"] {
-      width: 100%;
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-    }
-
-    button[type="submit"] {
-      display: block;
-      width: 100%;
-      padding: 8px;
-      background-color: #4CAF50;
-      color: #fff;
-      border: none;
-      border-radius: 3px;
-      cursor: pointer;
-    }
-  </style>
+  <link href="css/form.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-  <div class="container">
-    <h1>Credit Card Form</h1>
-    <h2>Total Price: $<%= totalPrice.toFixed(2) %></h2>
+  <div class="container" id="credit-card-container">
+    <h1 class="credit-card-form-title">Credit Card Form</h1>
+    <h2 class="total-price">Total Price: $<%= totalPrice.toFixed(2) %></h2>
   
     <!-- Credit card form -->
     <form action="/buy-all" method="POST">
-      <label for="cardNumber">Card Number:</label>
-      <input type="text" id="cardNumber" name="cardNumber" required>
+      <div class="form-group">
+        <label for="cardNumber">Card Number:</label>
+        <input type="text" id="cardNumber" name="cardNumber" class="textbox" required>
+      </div>
 
-      <label for="cvv">CVV:</label>
-      <input type="text" id="cvv" name="cvv" required>
+      <div class="form-group">
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" name="cvv" class="textbox" required>
+      </div>
 
-      <label for="expirationDate">Expiration Date:</label>
-      <input type="text" id="expirationDate" name="expirationDate" required>
+      <div class="form-group">
+        <label for="expirationDate">Expiration Date:</label>
+        <input type="text" id="expirationDate" name="expirationDate" class="textbox" required>
+      </div>
 
-      <button type="submit">Buy All</button>
+      <button type="submit" class="submit-button">Buy</button>
     </form>
   </div>
 </body>

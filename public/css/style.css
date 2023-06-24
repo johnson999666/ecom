@@ -122,3 +122,24 @@
     text-decoration: none;
     color: blue;
   }
+
+  @media (max-width: 767px) {
+    .container {
+      max-width: 100%;
+    }
+  
+    li {
+      width: 300px; /* Keep the same width as on larger screens */
+      margin: 10px;
+    }
+  
+    img {
+      width: 200px;
+      height: 200px;
+    }
+  
+    .button {
+      width: auto; /* Remove the width restriction */
+    }
+  }
+  

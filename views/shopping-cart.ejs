@@ -3,78 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <title>Shopping Cart</title>
-
   <link href="css/style.css" rel="stylesheet" type="text/css" />
-
   <style>
+    /* Add these styles for the total price */
     .total-price {
+      float: right;
       font-weight: bold;
-      font-size: 24px;
-      color: blue;
-      margin: 20px;
-      display: inline-block;
-      background-color: lightblue;
-      padding: 5px 10px;
-      border-radius: 5px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
     }
 
-    .total-price::before {
-      content: "$";
-      margin-right: 5px;
+    /* Add these styles for the home button */
+    .home-button {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+      padding: 10px 20px;
+      background-color: #ccc;
+      color: black;
+      text-decoration: none;
+      text-transform: uppercase;
+      box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .home-button:hover {
+      background-color: #999;
+    }
+
+    /* Add these styles for the buy button */
+    .buy-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      text-decoration: none;
+      text-transform: uppercase;
+      box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .buy-button:hover {
+      background-color: #45a049;
     }
   </style>
-
 </head>
 <body>
-<h1>Shopping Cart</h1>
+  <h1 class="container">Shopping Cart</h1>
 
-<div class="cart-container">
-<% if (cart.length > 0) { %>
-  <ul>
-    <% cart.forEach(product => { %>
-      <li>
-        <h3><%= product.name %></h3>
-        <p><% if (product.price) { %>Price: $<span class="price"><%= product.price.toFixed(2) %></span><% } else { %>Price: N/A<% } %></p>
-        <p>Description: <%= product.description %></p>
-        <img src="<%= product.image %>" alt="<%= product.name %>">
+  <div class="container">
+    <% if (cart.length > 0) { %>
+      <ul class="cart-items products-container">
+        <% cart.forEach(product => { %>
+          <li class="cart-item product-card">
+            <h3><%= product.name %></h3>
+            <p><% if (product.price) { %>Price: $<span class="price"><%= product.price.toFixed(2) %></span><% } else { %>Price: N/A<% } %></p>
+            <p>Description: <%= product.description %></p>
+            <img src="<%= product.image %>" alt="<%= product.name %>" class="product-card-img">
 
-        <form id="deleteForm-<%= product.id %>" action="/delete-item" method="POST">
-          <input type="hidden" name="productId" value="<%= product.id %>">
-          <button type="button" class="button delete-button">Delete from Cart</button>
-        </form>
-      </li>
-    <% }); %>
-  </ul>
-  <p><span class="total-price">Total Price: <%= totalPrice.toFixed(2) %></span></p>
-  <a href="/cards" class="button buy-button">Buy All</a>
-<% } else { %>
-  <p class="empty-cart-message">Your cart is empty.</p>
-<% } %>
-</div>
+            <form id="deleteForm-<%= product.id %>" action="/delete-item" method="POST">
+              <input type="hidden" name="productId" value="<%= product.id %>">
+              <button type="button" class="button delete-button">Delete from Cart</button>
+            </form>
+            <a href="/examine/<%= product.id %>" class="examine-link">Examine</a>
+          </li>
+        <% }); %>
+      </ul>
+      <p class="total-price">Total Price: $<span><%= totalPrice.toFixed(2) %></span></p>
+      <a href="/cards" class="buy-button">Buy All</a>
+    <% } else { %>
+      <p class="empty-cart-message">Your cart is empty.</p>
+    <% } %>
+  </div>
 
-<a href="/" class="button">Back to Home</a>
+  <a href="/" class="home-button">Back to Home</a>
 
-<script>
-function updateTotalPrice() {
-  const prices = document.querySelectorAll('.price');
-  let totalPrice = 0;
-  prices.forEach(price => {
-    totalPrice += parseFloat(price.innerText);
-  });
-  document.getElementById('totalPrice').innerText = totalPrice.toFixed(2);
-}
+  <script>
+    function updateTotalPrice() {
+      const prices = document.querySelectorAll('.price');
+      let totalPrice = 0;
+      prices.forEach(price => {
+        totalPrice += parseFloat(price.innerText);
+      });
+      document.querySelector('.total-price').innerText = totalPrice.toFixed(2);
+    }
 
-// Attach event listener to each delete button
-const deleteButtons = document.querySelectorAll('.delete-button');
-deleteButtons.forEach(button => {
-  button.addEventListener('click', function() {
-    const form = button.parentElement;
-    form.submit();
-    const listItem = form.parentElement;
-    listItem.remove();
-    updateTotalPrice();
-  });
-});
-</script>
+    // Attach event listener to each delete button
+    const deleteButtons = document.querySelectorAll('.delete-button');
+    deleteButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const form = button.parentElement;
+        form.submit();
+        const listItem = form.parentElement;
+        listItem.remove();
+        updateTotalPrice();
+      });
+    });
+  </script>
 </body>
 </html>

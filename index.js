@@ -139,6 +139,13 @@ const products = [
     description: 'This is the third product',
     image: 'images/coat6.jpg',
   },
+  {
+    id: '18',
+    name: 'Product 18',
+    price: 9.99,
+    description: 'This is the third product',
+    image: 'images/coat6.jpg',
+  },
 ];
 
 
@@ -255,11 +262,13 @@ app.get('/', requireLogin, (req, res) => {
 
   const products = fetchProducts(startIndex, endIndex); // Retrieve products based on the range
 
-  // Calculate the next page number
+  // Calculate the next and previous page numbers
   const nextPage = (products.length === productsPerPage) ? pageNumber + 1 : null;
+  const previousPage = (pageNumber > 1) ? pageNumber - 1 : null;
 
-  res.render('index', { products, cart, pageNumber, nextPage }); // Pass products array as a variable to the template
+  res.render('index', { products, cart, pageNumber, nextPage, previousPage }); // Pass variables to the template
 });
+
 
 
 

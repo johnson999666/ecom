@@ -4,44 +4,50 @@
   <link href="css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-  <h1>Ecommerce App</h1>
+  <div class="container">
+    <h1>Ecommerce App</h1>
 
-  <div class="cart-icon">
-    <a href="/shopping-cart">
-      <img src="images/cart.jpg" alt="Cart">
-    </a>
-  </div>
+    <div class="cart-icon">
+      <a href="/shopping-cart">
+        <img src="images/cart.jpg" alt="Cart">
+      </a>
+    </div>
 
-  <h2>Products - Page <%= pageNumber %></h2>
-  <ul>
-    <% products.forEach(function(product, index) { %>
-      <% if (index % 2 === 0) { %>
-        </ul>
-        <% if (index !== products.length - 1) { %>
-          <ul>
+    <h2>Products - Page <%= pageNumber %></h2>
+    <div class="products-container">
+      <% products.forEach(function(product, index) { %>
+        <div class="product-card">
+          <h3><%= product.name %></h3>
+          <img src="<%= product.image %>" alt="<%= product.name %>">
+          <p>Price: $<%= product.price %></p>
+          <p>Description: <%= product.description %></p>
+          <form action="/cart" method="GET">
+            <input type="hidden" name="productId" value="<%= product.id %>">
+            <button type="submit" onclick="showAlert()" class="button add-to-cart-button">Add to Cart</button>
+          </form>
+          <form action="/delete-item" method="POST">
+            <input type="hidden" name="productId" value="<%= product.id %>">
+            <button type="submit" class="button delete-button">Delete from Cart</button>
+          </form>
+          <a href="/product-details/<%= product.id %>" class="examine-link">Examine &rarr;</a>
+        </div>
+      <% }) %>
+    </div>
+
+    <% if (previousPage !== null || nextPage !== null) { %>
+      <div class="pagination-container">
+        <% if (previousPage !== null) { %>
+          <a class="pagination-link previous-page" href="/?page=<%= previousPage %>">Previous Page</a>
         <% } %>
-      <% } %>
-      <li>
-        <h3><%= product.name %></h3>
-        <img src="<%= product.image %>" alt="<%= product.name %>">
-        <p>Price: $<%= product.price %></p>
-        <p>Description: <%= product.description %></p>
-        <form action="/cart" method="GET">
-          <input type="hidden" name="productId" value="<%= product.id %>">
-          <button type="submit" onclick="showAlert()" class="button add-to-cart-button">Add to Cart</button>
-        </form>
-        <form action="/delete-item" method="POST">
-          <input type="hidden" name="productId" value="<%= product.id %>">
-          <button type="submit" class="button delete-button">Delete from Cart</button>
-        </form>
-        <a href="/product-details/<%= product.id %>">Examine</a>
-      </li>
-    <% }) %>
-  </ul>
-
-  <% if (nextPage !== null) { %>
-    <a class="pagination-link" href="/?page=<%= nextPage %>">Next Page</a>
-  <% } %>
+    
+        <% if (nextPage !== null) { %>
+          <a class="pagination-link next-page" href="/?page=<%= nextPage %>">Next Page</a>
+        <% } %>
+      </div>
+    <% } %>
+    
+    
+  </div>
 
   <script>
     function showAlert() {

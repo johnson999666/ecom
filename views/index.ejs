@@ -4,46 +4,28 @@
   <link href="css/style.css" rel="stylesheet" type="text/css" />
   <style>
     /* CSS for iPhone (portrait) */
+/* CSS for iPhone (portrait) */
 @media only screen and (max-width: 480px) {
   /* Set container to full width */
   .container {
     width: 100%;
     padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
   }
 
   /* Adjust product card layout */
   .product-card {
-    width: 100%;
-    margin-bottom: 20px;
-    box-sizing: border-box;
+    width: 90%;
+    max-width: 300px;
+    margin: 10px;
     padding: 10px;
-  }
-
-  /* Center align product card content */
-  .product-card h3,
-  .product-card img,
-  .product-card p {
-    text-align: center;
-  }
-
-  /* Adjust image size */
-  .product-card img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-  }
-
-  /* Adjust pagination container */
-  .pagination-container {
-    text-align: center;
-  }
-
-  /* Hide previous and next page links */
-  .previous-page,
-  .next-page {
-    display: none;
+    box-sizing: border-box;
   }
 }
+
 
   </style>
 </head>

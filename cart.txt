@@ -54,5 +54,26 @@
     "price": 39.99,
     "description": "This is the third product",
     "image": "images/yellow.jpg"
+  },
+  {
+    "id": "15",
+    "name": "Product 15",
+    "price": 9.99,
+    "description": "This is the third product",
+    "image": "images/coat4.jpg"
+  },
+  {
+    "id": "15",
+    "name": "Product 15",
+    "price": 9.99,
+    "description": "This is the third product",
+    "image": "images/coat4.jpg"
+  },
+  {
+    "id": "10",
+    "name": "Product 10",
+    "price": 9.99,
+    "description": "This is the third product",
+    "image": "images/pin.jpg"
   }
 ]

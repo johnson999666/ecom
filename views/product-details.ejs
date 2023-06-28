@@ -3,68 +3,82 @@
 <head>
   <title>Product Details</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="css/product.css" rel="stylesheet" type="text/css" />
+
+ 
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 20px;
     }
-
+  
     .container {
       max-width: 800px;
       margin: 0 auto;
     }
-
+  
     .title {
       text-align: center;
       margin-bottom: 20px;
     }
-
+  
     .product-details {
       display: flex;
       flex-wrap: wrap;
       align-items: flex-start;
       margin-bottom: 20px;
     }
-
+  
     .product-details img {
       max-width: 400px;
       margin: 10px;
       display: block;
     }
-
+  
     .buttons-container {
       display: flex;
-      justify-content: flex-end;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: flex-start;
       margin-top: 10px;
     }
-
+  
     .button {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #007bff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-right: 10px;
+      margin-bottom: 10px;
+     
       color: #fff;
       text-decoration: none;
       border: none;
-      border-radius: 4px;
-      margin-right: 10px;
-      margin-bottom: 10px;
-    }
-
-    .button:hover {
-      background-color: #0056b3;
       cursor: pointer;
     }
-
-    .delete-from-cart {
-      background-color: #dc3545;
-    }
-
-    .add-to-cart-button {
-      background-color: #28a745;
-    }
-
+  
+    .button.dot-1 { background-color: #007bff; }
+    .button.dot-2 { background-color: #dc3545; }
+    .button.dot-3 { background-color: #28a745; }
+    .button.dot-4 { background-color: orange; }
+    .button.dot-5 { background-color: black; }
+    .button.dot-6 { background-color: violet; }
+    .button.dot-7 { background-color: #007bff; }
+    .button.dot-8 { background-color: #dc3545; }
+    .button.dot-9 { background-color: #28a745; }
+    .button.dot-10 { background-color: orange; }
+    .button.dot-11 { background-color: black; }
+    .button.dot-12 { background-color: violet; }
+    .button.dot-13 { background-color: #007bff; }
+    .button.dot-14 { background-color: #dc3545; }
+    .button.dot-15 { background-color: #28a745; }
+    .button.dot-16 { background-color: orange; }
+    .button.dot-17 { background-color: black; }
+    .button.dot-18 { background-color: violet; }
+    /* Add more button classes with different colors as needed */
+  
     .price {
       font-size: 24px;
       font-weight: bold;
@@ -72,18 +86,103 @@
       bottom: 20px;
       right: 20px;
     }
-
+  
     .price:before {
       content: "$";
     }
+  
+    @media only screen and (max-width: 600px) and (orientation: portrait) {
+      .buttons-container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 0;
+      }
 
-    @media only screen and (max-width: 600px) {
+      .button {
+        margin-right: 5px;
+        margin-bottom: 5px;
+      }
+
       .price {
         position: static;
         text-align: right;
         margin-top: 10px;
       }
     }
+
+    /* Custom styles for Add to Cart button */
+    .add-to-cart-button.button {
+      background-color: #4caf50 !important;
+      /* Add your additional styles for the Add to Cart button here */
+    }
+
+    /* Custom styles for Delete from Cart button */
+    .delete-button.button {
+      background-color: #f44336 !important;
+      /* Add your additional styles for the Delete from Cart button here */
+    }
+    .button.add-to-cart-button {
+  background-color: #4caf50 !important;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 4px 8px;
+  width: auto !important;
+}
+
+.button.delete-button {
+  background-color: #f44336 !important;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 4px 8px;
+  width: auto !important;
+}
+.product-details img {
+  width: 300px; /* Adjust the width as needed */
+  height: 300px; /* Adjust the height as needed */
+  object-fit: contain; /* Fit the entire image within the container */
+  object-position: center; /* Center the image within the container */
+  margin: 10px;
+  display: block;
+}
+.buttons-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 10px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .buttons-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 0;
+  }
+
+  .button {
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+}
+
+
+
   </style>
 </head>
 <body> 
@@ -93,22 +192,89 @@
     <div class="product-details">
       <h3><%= product.name %></h3>
       <img src="/images/<%= product.image.split('/').pop() %>" alt="<%= product.name %>">
-      <p class="price">Price: <%= product.price %></p>
-
+      
       <div class="buttons-container">
-        <form action="/delete-item" method="POST">
-          <input type="hidden" name="productId" value="<%= product.id %>">
-          <button type="submit" class="button delete-from-cart">Delete from Cart</button>
-        </form>
+        <% if (product.id <= 6) { %>
+          <% for (let i = 0; i < 6; i++) { %>
+            <button type="button" class="button dot-<%= i + 1 %>" id="button<%= i + 1 %>" onclick="fetchProductDetails(<%= i + 1 %>);" onmouseenter="changeButtonColor('button<%= i + 1 %>');" onmouseleave="restoreButtonColor('button<%= i + 1 %>');"></button>
 
-        <form action="/cart" method="GET">
-          <input type="hidden" name="productId" value="<%= product.id %>">
-          <button type="submit" onclick="showAlert()" class="button add-to-cart-button">Add to Cart</button>
-        </form>
+          <% } %>
+        <% } else if (product.id <= 12) { %>
+          <% for (let i = 6; i < 12; i++) { %>
+            <button type="button" class="button dot-<%= i + 1 %>" id="button<%= i + 1 %>" onclick="fetchProductDetails(<%= i + 1 %>);" onmouseenter="changeButtonColor('button<%= i + 1 %>');" onmouseleave="restoreButtonColor('button<%= i + 1 %>');"></button>
+
+          <% } %>
+        <% } else { %>
+          <% for (let i = 12; i < products.length; i++) { %>
+            <button type="button" class="button dot-<%= i + 1 %>" id="button<%= i + 1 %>" onclick="fetchProductDetails(<%= i + 1 %>);" onmouseenter="changeButtonColor('button<%= i + 1 %>');" onmouseleave="restoreButtonColor('button<%= i + 1 %>');"></button>
+
+          <% } %>
+        <% } %>
       </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+     
+      
+      <p class="price">Price: <%= product.price %></p>
     </div>
+    <form action="/cart" method="GET">
+      <input type="hidden" name="productId" value="<%= product.id %>">
+      <button type="submit" onclick="showAlert()" class="button add-to-cart-button" style="background-color: #4caf50 !important; border-radius: 4px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">Add to Cart</button>
 
+     
+      
+    </form>
+    <form action="/delete-item" method="POST">
+      <input type="hidden" name="productId" value="<%= product.id %>">
+      <button type="submit" class="button delete-button" style="background-color: #f44336 !important; border-radius: 4px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">Delete from Cart</button>
+    </form>
     <a href="/" class="button">Back to Products</a>
   </div>
+
+  <!-- Include your own JavaScript code here -->
+  <script>
+function fetchProductDetails(productId) {
+  const scrollPosition = window.scrollY; // Store the current scroll position
+
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', '/product-details/' + productId);
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        const parser = new DOMParser();
+        const newDocument = parser.parseFromString(xhr.responseText, 'text/html');
+        const newProductDetails = newDocument.querySelector('.product-details');
+        const currentProductDetails = document.querySelector('.product-details');
+
+        currentProductDetails.innerHTML = newProductDetails.innerHTML;
+
+        // Execute scroll restoration after updating the content
+        setTimeout(() => {
+          window.scrollTo(0, scrollPosition); // Restore the scroll position
+        }, 0);
+      } else {
+        console.error('Error:', xhr.status);
+      }
+    }
+  };
+  xhr.send();
+
+  event.preventDefault();
+}
+
+
+
+  </script>
 </body>
 </html>

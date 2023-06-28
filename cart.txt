@@ -1,79 +1,73 @@
 [
   {
+    "id": "5",
+    "name": "Product 5",
+    "price": 39.99,
+    "description": "This is the third product",
+    "color": "yellow",
+    "image": "images/yellow.jpg"
+  },
+  {
+    "id": "5",
+    "name": "Product 5",
+    "price": 39.99,
+    "description": "This is the third product",
+    "color": "yellow",
+    "image": "images/yellow.jpg"
+  },
+  {
+    "id": "5",
+    "name": "Product 5",
+    "price": 39.99,
+    "description": "This is the third product",
+    "color": "yellow",
+    "image": "images/yellow.jpg"
+  },
+  {
     "id": "1",
     "name": "Product 1",
     "price": 19.99,
     "description": "This is the first product",
+    "color": "red",
     "image": "images/green.jpg"
   },
   {
-    "id": "2",
-    "name": "Product 2",
-    "price": 29.99,
-    "description": "This is the second product",
+    "id": "1",
+    "name": "Product 1",
+    "price": 19.99,
+    "description": "This is the first product",
+    "color": "red",
     "image": "images/red.jpg"
   },
   {
-    "id": "2",
-    "name": "Product 2",
-    "price": 29.99,
-    "description": "This is the second product",
+    "id": "1",
+    "name": "Product 1",
+    "price": 19.99,
+    "description": "This is the first product",
+    "color": "red",
     "image": "images/red.jpg"
   },
   {
-    "id": "17",
-    "name": "Product 17",
-    "price": 9.99,
-    "description": "This is the third product",
-    "image": "images/coat6.jpg"
+    "id": "1",
+    "name": "Product 1",
+    "price": 19.99,
+    "description": "This is the first product",
+    "color": "red",
+    "image": "images/red.jpg"
+  },
+  {
+    "id": "1",
+    "name": "Product 1",
+    "price": 19.99,
+    "description": "This is the first product",
+    "color": "red",
+    "image": "images/red.jpg"
   },
   {
     "id": "8",
     "name": "Product 8",
     "price": 9.99,
     "description": "This is the third product",
-    "image": "images/blu.jpg"
-  },
-  {
-    "id": "9",
-    "name": "Product 9",
-    "price": 9.99,
-    "description": "This is the third product",
-    "image": "images/perp.jpg"
-  },
-  {
-    "id": "5",
-    "name": "Product 5",
-    "price": 39.99,
-    "description": "This is the third product",
-    "image": "images/yellow.jpg"
-  },
-  {
-    "id": "5",
-    "name": "Product 5",
-    "price": 39.99,
-    "description": "This is the third product",
-    "image": "images/yellow.jpg"
-  },
-  {
-    "id": "15",
-    "name": "Product 15",
-    "price": 9.99,
-    "description": "This is the third product",
-    "image": "images/coat4.jpg"
-  },
-  {
-    "id": "15",
-    "name": "Product 15",
-    "price": 9.99,
-    "description": "This is the third product",
-    "image": "images/coat4.jpg"
-  },
-  {
-    "id": "10",
-    "name": "Product 10",
-    "price": 9.99,
-    "description": "This is the third product",
-    "image": "images/pin.jpg"
+    "image": "images/redp.jpg"
   }
 ]
